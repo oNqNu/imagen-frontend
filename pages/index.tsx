@@ -17,6 +17,7 @@ import {
   ReactCompareSliderImage,
 } from 'react-compare-slider'
 import { BsFillForwardFill } from 'react-icons/bs'
+import { BiDownload } from 'react-icons/bi'
 
 export default function Home() {
   const [images, setImages] = useState<File[]>([])
@@ -139,7 +140,9 @@ export default function Home() {
                 <br />
                 <b>グレースケール化</b>といいます．
                 <br />
-                Pythonの画像処理ライブラリであるopencvを使うことで簡単に画像をグレースケール化することができます．
+                <br />
+                Pythonの画像処理ライブラリである<b>Open CV</b>
+                を使うことで簡単に画像をグレースケール化することができます．
               </Text>
               <Center mt='10'>
                 <chakra.img src='dog.jpg' alt='description of image' h='48' />
@@ -240,9 +243,27 @@ export default function Home() {
                       />
                     ))}
                     <Button
+                      as='a'
+                      href={`data:image/jpeg;base64,${resultImage}`}
+                      download
                       bgColor='blue.500'
                       color='white'
-                      m='4'
+                      mt='4'
+                      mr='4'
+                      _hover={{
+                        color: 'blue.500',
+                        bgColor: 'white',
+                        border: '1px',
+                        borderColor: 'blue.500',
+                      }}
+                    >
+                      <BiDownload size='30px' />
+                    </Button>
+                    <Button
+                      bgColor='blue.500'
+                      color='white'
+                      mt='4'
+                      mr='4'
                       _hover={{
                         color: 'blue.500',
                         bgColor: 'white',
@@ -255,7 +276,7 @@ export default function Home() {
                         setImages([])
                       }}
                     >
-                      他の画像を試す．
+                      他の画像を試す
                     </Button>
                   </Box>
                 )}
