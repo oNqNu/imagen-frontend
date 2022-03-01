@@ -1,4 +1,3 @@
-import '../styles/globals.css'
 import { IconContext } from 'react-icons'
 
 import { ChakraProvider } from '@chakra-ui/react'
