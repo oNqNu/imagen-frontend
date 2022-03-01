@@ -5,8 +5,8 @@ import { useRouter } from 'next/router'
 export const MyLayout = ({ children, ...props }: any) => {
   const precesses = [
     { name: 'グレースケール', label: 'grayscale' },
-    { name: '平滑化', label: 'grayscale2' },
-    { name: 'エッジ検出', label: 'grayscale3' },
+    { name: '平滑化', label: 'smoothing' },
+    { name: 'エッジ検出', label: 'edge-detection' },
     // { name: 'グレースケール4', label: 'grayscale4' },
     // { name: 'グレースケール5', label: 'grayscale5' },
   ]
@@ -37,7 +37,7 @@ export const MyLayout = ({ children, ...props }: any) => {
           w='32'
           fontSize='4xl'
           my='auto'
-          ml='60'
+          ml='96'
           fontFamily='fantasy'
           cursor='pointer'
           onClick={(e) => pushRoute(e, `/`)}

@@ -51,7 +51,7 @@ export default function Home() {
     })
     console.log(images)
     console.log(data.get('file0'))
-    const postImageUri = 'http://localhost:5000/processing/grayscale'
+    const postImageUri = 'http://localhost:5000/processing/edge_detection'
     axios
       .post(postImageUri, data, header)
       .then((res) => {
@@ -77,7 +77,7 @@ export default function Home() {
                   fontWeight='900'
                   display='inline-block'
                 >
-                  グレースケール
+                  エッジ検出
                 </Text>
               </Box>
               <Text
@@ -88,9 +88,10 @@ export default function Home() {
                 fontFamily='"M PLUS Rounded 1c", sans-serif'
                 fontWeight='300'
               >
-                通常，画像はRGB(赤,緑,青)の3つの値で表されます.
+                <b>エッジ検出</b>
+                は画像内にある物体のエッジを見つけるために使用されます．
                 <br />
-                そういった画像を，色見のない明るさの度合いだけで表現することを
+                エッジは輝度の不連続性から検出され、物体の輪郭や特徴抽出等の画像解析に使われます．
                 <br />
                 <b>グレースケール化</b>といいます．
                 <br />
@@ -106,7 +107,7 @@ export default function Home() {
                 />
                 <BsFillForwardFill size='70px' />
                 <chakra.img
-                  src='../dog_gray.jpg'
+                  src='../dog_edge.jpg'
                   alt='description of image'
                   h='48'
                 />
@@ -119,12 +120,11 @@ export default function Home() {
                 fontSize='3xl'
                 fontWeight='600'
               >
-                グレースケール化を試す．
+                エッジ検出を試す．
               </Text>
               <Box mt='8'>
                 {!isViewing && (
                   <Input
-                    // id={inputId}
                     type='file'
                     accept='image/*,.png,.jpg,.jpeg,.gif'
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -200,23 +200,7 @@ export default function Home() {
                         }
                       />
                     ))}
-                    <Button
-                      as='a'
-                      href={`data:image/jpeg;base64,${resultImage}`}
-                      download
-                      bgColor='blue.500'
-                      color='white'
-                      mt='4'
-                      mr='4'
-                      _hover={{
-                        color: 'blue.500',
-                        bgColor: 'white',
-                        border: '1px',
-                        borderColor: 'blue.500',
-                      }}
-                    >
-                      <BiDownload size='30px' />
-                    </Button>
+
                     <Button
                       bgColor='blue.500'
                       color='white'
@@ -235,6 +219,23 @@ export default function Home() {
                       }}
                     >
                       他の画像を試す
+                    </Button>
+                    <Button
+                      as='a'
+                      href={`data:image/jpeg;base64,${resultImage}`}
+                      download
+                      bgColor='blue.500'
+                      color='white'
+                      mt='4'
+                      mr='4'
+                      _hover={{
+                        color: 'blue.500',
+                        bgColor: 'white',
+                        border: '1px',
+                        borderColor: 'blue.500',
+                      }}
+                    >
+                      <BiDownload size='30px' />
                     </Button>
                   </Box>
                 )}
