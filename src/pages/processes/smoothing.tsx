@@ -45,7 +45,8 @@ export default function Home() {
     })
     console.log(images)
     console.log(data.get('file0'))
-    const postImageUri = 'http://localhost:5000/processing/smoothing'
+    const postImageUri =
+      'https://agile-fjord-29952.herokuapp.com/processing/grayscale'
     axios
       .post(postImageUri, data, header)
       .then((res) => {
