@@ -19,6 +19,10 @@ import {
   useDisclosure,
   useToast,
   IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
 } from '@chakra-ui/react'
 import { init, send } from 'emailjs-com'
 import Head from 'next/head'
@@ -26,6 +30,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { BiMailSend } from 'react-icons/bi'
 import { BsGithub } from 'react-icons/bs'
+import { AiOutlineMenu } from 'react-icons/ai'
 
 export const MyLayout = ({ children, ...props }: any) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -34,7 +39,7 @@ export const MyLayout = ({ children, ...props }: any) => {
   const [mail, setMail] = useState('')
   const [title, setTitle] = useState('')
   const [message, setMessage] = useState('')
-  const precesses = [
+  const processes = [
     { name: 'グレースケール', label: 'grayscale' },
     { name: '平滑化', label: 'smoothing' },
     { name: 'エッジ検出', label: 'edge-detection' },
@@ -149,13 +154,34 @@ export const MyLayout = ({ children, ...props }: any) => {
               icon={<BiMailSend size='40px' />}
               size='40px'
               onClick={onOpen}
+              display={['none', 'inline-block']}
             />
+            <Menu>
+              <MenuButton
+                color='white'
+                as={IconButton}
+                aria-label='Options'
+                icon={<AiOutlineMenu size='30px' />}
+                colorScheme='blackAlpha'
+              />
+
+              <MenuList zIndex='2'>
+                {processes.map((process, i) => (
+                  <MenuItem
+                    key={i}
+                    onClick={(e) => pushRoute(e, `/processes/${process.label}`)}
+                  >
+                    {process.name}
+                  </MenuItem>
+                ))}
+              </MenuList>
+            </Menu>
           </HStack>
         </Container>
       </chakra.header>
-      <Center w='100%' h='60px'>
+      <Center w='100%' h='60px' display={['none', 'flex']}>
         <HStack gap='4' mt='4'>
-          {precesses.map((process, i) => (
+          {processes.map((process, i) => (
             <Button
               key={i}
               w='28'

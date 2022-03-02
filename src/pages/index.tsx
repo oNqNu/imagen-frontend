@@ -4,6 +4,7 @@ import {
   Center,
   chakra,
   HStack,
+  SimpleGrid,
   SlideFade,
   Stack,
   Text,
@@ -19,13 +20,7 @@ export default function Home() {
   return (
     <>
       <MyLayout />
-      <Center
-        w='100%'
-        fontSize='6xl'
-        // fontFamily='"M PLUS Rounded 1c", sans-serif'
-        fontWeight='700'
-        mt='12'
-      >
+      <Center w='100%' fontSize={['xl', '6xl']} fontWeight='700' mt='12'>
         <Text textAlign='center'>
           こんにちは，<chakra.span color='blue.600'>Imagen </chakra.span>
           は様々な
@@ -34,21 +29,28 @@ export default function Home() {
         </Text>
       </Center>
       <Center mt='12' flexDirection='column'>
-        <HStack gap='4' zIndex='100'>
+        <SimpleGrid gap='4' zIndex='1' columns={[2, 4]}>
           <FadeInImage image='dog.jpg' delay={0} />
           <FadeInImage image='dog_gray.jpg' delay={0.3} />
           <FadeInImage image='dog_rgb.jpg' delay={0.6} />
           <FadeInImage image='dog_edge.jpg' delay={0.9} />
-        </HStack>
+        </SimpleGrid>
         <SlideFade
           in
           offsetY='20px'
           transition={{ enter: { duration: 1.0, delay: 1.0 } }}
         >
-          <Box m='-10' h='20' w='6xl' bgColor='#DDD' borderRadius='50%'></Box>
+          <Box
+            m='-10'
+            h='20'
+            w='6xl'
+            bgColor='#DDD'
+            borderRadius='50%'
+            display={['none', 'block']}
+          ></Box>
         </SlideFade>
-        <Center my='32'>
-          <Stack direction='row' spacing={4}>
+        <Center my={['16', '32']}>
+          <SimpleGrid spacing={4} columns={[1, 2]}>
             <Button
               as='a'
               leftIcon={<BsGithub size='30px' />}
@@ -73,7 +75,7 @@ export default function Home() {
             >
               バックエンド
             </Button>
-          </Stack>
+          </SimpleGrid>
         </Center>
       </Center>
     </>

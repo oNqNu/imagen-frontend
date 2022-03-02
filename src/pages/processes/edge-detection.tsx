@@ -6,7 +6,6 @@ import {
   Input,
   SimpleGrid,
   Spinner,
-  Text,
 } from '@chakra-ui/react'
 import axios from 'axios'
 import { useState } from 'react'
@@ -18,7 +17,7 @@ import {
   MySampleImages,
 } from '../../component/image'
 import { MyLayout } from '../../component/layout'
-import { MyDiscription, MyHeading } from '../../component/text'
+import { MyDiscription, MyHeading, MySubHeading } from '../../component/text'
 
 export default function Home() {
   const [image, setImage] = useState<File>()
@@ -109,9 +108,7 @@ export default function Home() {
               />
             </Box>
             <Box px='10'>
-              <Text mt='16' fontSize='3xl' fontWeight='600'>
-                エッジ検出を試す．
-              </Text>
+              <MySubHeading mt={['8', '16']}>エッジ検出を試す．</MySubHeading>
               <Box mt='8'>
                 {!isViewing && (
                   <Input

@@ -18,7 +18,7 @@ import {
   MySampleImages,
 } from '../../component/image'
 import { MyLayout } from '../../component/layout'
-import { MyDiscription, MyHeading } from '../../component/text'
+import { MyDiscription, MyHeading, MySubHeading } from '../../component/text'
 
 export default function Home() {
   const [image, setImage] = useState<File>()
@@ -106,9 +106,7 @@ export default function Home() {
               />
             </Box>
             <Box px='10'>
-              <Text mt='16' fontSize='3xl' fontWeight='600'>
-                画素値の変更を試す．
-              </Text>
+              <MySubHeading mt={['8', '16']}>画素値の変更を試す．</MySubHeading>
               <Box mt='8'>
                 {!isViewing && (
                   <Input
