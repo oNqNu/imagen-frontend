@@ -12,35 +12,37 @@ export default function Home() {
   return (
     <>
       <MyLayout />
-      <Box h='28'></Box>
       <Center
         w='100%'
-        fontSize='7xl'
+        fontSize='6xl'
         // fontFamily='"M PLUS Rounded 1c", sans-serif'
         fontWeight='700'
+        mt='12'
       >
         <Text textAlign='center'>
           こんにちは，<chakra.span color='blue.600'>Imagen </chakra.span>
-          は様々な画像処理を
+          は様々な
           <br />
+          画像処理を
+          {/* <br /> */}
           体験できるサイトです．
         </Text>
       </Center>
-      <Center mt='20' flexDirection='column'>
+      <Center mt='12' flexDirection='column'>
         <HStack gap='4'>
-          <chakra.img src='../dog.jpg' alt='description of image' h='48' />
-          <chakra.img src='../dog_gray.jpg' alt='description of image' h='48' />
+          <chakra.img src='../dog.jpg' alt='description of image' h='32' />
+          <chakra.img src='../dog_gray.jpg' alt='description of image' h='32' />
           <chakra.img
             src='../dog_smooth.jpg'
             alt='description of image'
-            h='48'
+            h='32'
           />
-          <chakra.img src='../dog_edge.jpg' alt='description of image' h='48' />
+          <chakra.img src='../dog_edge.jpg' alt='description of image' h='32' />
         </HStack>
         <Box
           m='-10'
           h='20'
-          w='7xl'
+          w='6xl'
           bgColor='blue.100'
           borderRadius='50%'
           zIndex='-1'

@@ -37,6 +37,7 @@ export const MyLayout = ({ children, ...props }: any) => {
     { name: 'グレースケール', label: 'grayscale' },
     { name: '平滑化', label: 'smoothing' },
     { name: 'エッジ検出', label: 'edge-detection' },
+    { name: 'しきい値処理', label: 'binary' },
   ]
   const router = useRouter()
   const pushRoute = (e, href: string) => {
@@ -101,24 +102,17 @@ export const MyLayout = ({ children, ...props }: any) => {
       <Head>
         <title>Imagen</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-        {
-          // eslint-disable-next-line @next/next/no-page-custom-font
-          <link
-            href='https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap'
-            rel='stylesheet'
-          />
-        }
       </Head>
       <chakra.header
         bgColor='black'
         w='100%'
-        h='60px'
+        h='50px'
         display='flex'
         alignItems='center'
       >
         <Container
-          maxW='60%'
-          h='60px'
+          maxW='7xl'
+          h='50px'
           justifyContent='space-between'
           display='flex'
           alignItems='center'
@@ -126,7 +120,7 @@ export const MyLayout = ({ children, ...props }: any) => {
           <Text
             color='white'
             textAlign='center'
-            lineHeight='60px'
+            lineHeight='50px'
             w='32'
             fontSize='4xl'
             fontFamily='fantasy'
@@ -147,17 +141,18 @@ export const MyLayout = ({ children, ...props }: any) => {
           </HStack>
         </Container>
       </chakra.header>
-      <Center w='100%' h='70px'>
+      <Center w='100%' h='60px'>
         <HStack gap='4' mt='4'>
           {precesses.map((process, i) => (
             <Button
               key={i}
-              w='32'
+              w='28'
               textAlign='center'
-              lineHeight='70px'
+              lineHeight='60px'
               color='gray.500'
               variant='link'
               onClick={(e) => pushRoute(e, `/processes/${process.label}`)}
+              fontSize='sm'
             >
               {process.name}
             </Button>

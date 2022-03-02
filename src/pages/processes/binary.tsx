@@ -46,7 +46,7 @@ export default function Home() {
     data.append('image', image)
 
     const postImageUri =
-      'https://agile-fjord-29952.herokuapp.com/processing/smoothing'
+      'https://agile-fjord-29952.herokuapp.com/processing/change_color'
     axios
       .post(postImageUri, data, header)
       .then((res) => {
@@ -89,27 +89,26 @@ export default function Home() {
         <Container maxW='7xl'>
           <SimpleGrid columns={[1, 2]}>
             <Box>
-              <MyHeading mt='10'>平滑化</MyHeading>
+              <MyHeading mt='10'>しきい値処理</MyHeading>
               <MyDiscription mt='6'>
-                平滑化は画像をぼやけさせる処理で，画像中のノイズ除去などに効果的です．
+                <b>しきい値処理</b>
+                は，画像を白と黒の2色のみに変換する画像処理技術です．
                 <br />
-                画像の高周波成分(エッジやノイズ)を消すことで結果として画像全体がぼやけています．
-                このような処理を画像の<b>平滑化</b>といいます．
+                画像を2色に変換することで，物体の境目がはっきりとし，様々な画像解析が可能となります．
                 <br />
+                例えば，混入した異物の個数をカウントしたり，特定の物体の大きさを測定することに応用されます．
                 <br />
-                平滑化の中にも様々な種類がありますが，このページでは指定した範囲内の画素値の平均をとることで
-                画像の平滑化を行う<b>「平均値フィルタ」</b>
-                を使った処理を試せます．
+                画像上の物体と背景の境界の濃淡が薄い場合には，その部分が検知されない場合もあります．
               </MyDiscription>
               <MySampleImages
                 mt='8'
                 orginalSrc='../dog.jpg'
-                resultSrc='../dog_smooth.jpg'
+                resultSrc='../dog_binary.jpg'
               />
             </Box>
             <Box px='10'>
               <Text mt='16' fontSize='3xl' fontWeight='600'>
-                平滑化を試す．
+                グレースケール化を試す．
               </Text>
               <Box mt='8'>
                 {!isViewing && (

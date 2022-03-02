@@ -2,43 +2,39 @@ import {
   Box,
   Button,
   Center,
-  chakra,
   Container,
   Input,
-  Text,
-  HStack,
   SimpleGrid,
+  Spinner,
+  Text,
 } from '@chakra-ui/react'
-import Head from 'next/head'
-import { useState } from 'react'
-import { MyLayout } from '../../component/layout'
 import axios from 'axios'
-import {
-  ReactCompareSlider,
-  ReactCompareSliderImage,
-} from 'react-compare-slider'
-import { BsFillForwardFill } from 'react-icons/bs'
+import { useState } from 'react'
 import { BiDownload } from 'react-icons/bi'
+import { MyButton } from '../../component/button'
+import {
+  MyImageSlider,
+  MyPreviewImage,
+  MySampleImages,
+} from '../../component/image'
+import { MyLayout } from '../../component/layout'
+import { MyDiscription, MyHeading } from '../../component/text'
 
 export default function Home() {
-  const [images, setImages] = useState<File[]>([])
+  const [image, setImage] = useState<File>()
+  const [originalImage, setOriginalImage] = useState<any>('')
   const [resultImage, setResultImage] = useState<string>('')
   const [isPreviewing, setIsPreviewing] = useState<Boolean>(false)
   const [isViewing, setIsViewing] = useState<Boolean>(false)
-  const inputId = Math.random().toString(32).substring(2)
+  const [isLoading, setIsLoading] = useState<Boolean>(false)
   const handleOnAddImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return
     const img: File = e.target.files[0]
-    setImages([...images, img])
+    setImage(img)
   }
 
-  const precesses = [
-    { name: 'グレースケール', label: 'grayscale' },
-    { name: '平滑化', label: 'grayscale2' },
-    { name: 'エッジ検出', label: 'grayscale3' },
-  ]
-
   const submitImage = () => {
+    setIsLoading(true)
     const header = {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -46,80 +42,74 @@ export default function Home() {
       },
     }
     const data = new FormData()
-    images.map((image, i) => {
-      data.append(`file${i}`, image)
-    })
-    console.log(images)
-    console.log(data.get('file0'))
-    const postImageUri = 'http://localhost:5000/processing/edge_detection'
+
+    data.append('image', image)
+
+    const postImageUri =
+      'https://agile-fjord-29952.herokuapp.com/processing/edge_detection'
     axios
       .post(postImageUri, data, header)
       .then((res) => {
         console.log(res.data)
         setResultImage(res.data)
+        setIsLoading(false)
       })
       .catch((err) => {
         console.log(err)
+        setIsLoading(false)
       })
+  }
+  const onConfirm = () => {
+    submitImage()
+    setIsViewing(true)
+    setIsPreviewing(false)
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      setOriginalImage(reader.result)
+    }
+    reader.readAsDataURL(image)
+  }
+
+  const onRechoose = () => {
+    setIsPreviewing(false)
+    setImage(null)
+  }
+
+  const onRetry = () => {
+    setIsPreviewing(false)
+    setIsViewing(false)
+    setImage(null)
+    setResultImage(null)
   }
 
   return (
     <>
       <MyLayout />
       <Center w='100%'>
-        <Box w='80%'>
-          <SimpleGrid columns={2}>
-            <Box h='100vh'>
-              <Box ml='10' mt='10'>
-                <Text
-                  fontSize='6xl'
-                  fontFamily='"M PLUS Rounded 1c", sans-serif'
-                  fontWeight='900'
-                  display='inline-block'
-                >
-                  エッジ検出
-                </Text>
-              </Box>
-              <Text
-                mt='6'
-                mx='10'
-                fontSize='xl'
-                lineHeight='8'
-                fontFamily='"M PLUS Rounded 1c", sans-serif'
-                fontWeight='300'
-              >
+        <Container maxW='7xl'>
+          <SimpleGrid columns={[1, 2]}>
+            <Box>
+              <MyHeading mt='10'>エッジ検出</MyHeading>
+              <MyDiscription mt='6'>
                 <b>エッジ検出</b>
-                は画像内にある物体のエッジを見つけるために使用されます．
+                は画像内にある物体のエッジを見つけるための画像処理技術です．
                 <br />
                 エッジは輝度の不連続性から検出され、物体の輪郭や特徴抽出等の画像解析に使われます．
                 <br />
-                <b>グレースケール化</b>といいます．
+                具体的な応用例は，道路の白線検出や不良品の検出などに使用されます．
                 <br />
                 <br />
-                Pythonの画像処理ライブラリである<b>Open CV</b>
-                を使うことで簡単に画像をグレースケール化することができます．
-              </Text>
-              <Center mt='10'>
-                <chakra.img
-                  src='../dog.jpg'
-                  alt='description of image'
-                  h='48'
-                />
-                <BsFillForwardFill size='70px' />
-                <chakra.img
-                  src='../dog_edge.jpg'
-                  alt='description of image'
-                  h='48'
-                />
-              </Center>
+                エッジ検出の中にも様々な方式がありますが，このページでは輪郭の検出漏れや誤検出が少ないなどの特徴がある
+                <b>Canny法</b>でのエッジ検出を試せます．
+              </MyDiscription>
+              <MySampleImages
+                mt='8'
+                orginalSrc='../dog.jpg'
+                resultSrc='../dog_edge.jpg'
+              />
             </Box>
-            <Box h='100vh' px='10'>
-              <Text
-                fontFamily='"M PLUS Rounded 1c", sans-serif'
-                mt='100'
-                fontSize='3xl'
-                fontWeight='600'
-              >
+            <Box px='10'>
+              <Text mt='16' fontSize='3xl' fontWeight='600'>
                 エッジ検出を試す．
               </Text>
               <Box mt='8'>
@@ -135,91 +125,36 @@ export default function Home() {
                 )}
                 {isPreviewing && (
                   <Box>
-                    {images.map((image, i) => (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <chakra.img
-                        key={i}
-                        src={URL.createObjectURL(image)}
-                        alt='description of image'
-                        h='52'
-                      />
-                    ))}
-                    <Button
-                      m='4'
-                      onClick={() => {
-                        submitImage()
-                        setIsViewing(true)
-                        setIsPreviewing(false)
-                      }}
-                      bgColor='blue.500'
-                      color='white'
-                      _hover={{
-                        color: 'blue.500',
-                        bgColor: 'white',
-                        border: '1px',
-                        borderColor: 'blue.500',
-                      }}
-                    >
+                    <MyPreviewImage image={image} />
+
+                    <MyButton m='4' onClick={onConfirm}>
                       確定
-                    </Button>
-                    <Button
-                      bgColor='blue.500'
-                      color='white'
-                      _hover={{
-                        color: 'blue.500',
-                        bgColor: 'white',
-                        border: '1px',
-                        borderColor: 'blue.500',
-                      }}
-                      onClick={() => {
-                        setIsPreviewing(false)
-                        setImages([])
-                      }}
-                    >
+                    </MyButton>
+                    <MyButton onClick={onRechoose}>
                       別の画像を選択する．
-                    </Button>
+                    </MyButton>
                   </Box>
                 )}
+                {isLoading && (
+                  <Spinner
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='blue.500'
+                    size='xl'
+                  />
+                )}
 
-                {isViewing && (
-                  <Box w='xl' h='xl'>
-                    {images.map((image, i) => (
-                      <ReactCompareSlider
-                        key={i}
-                        itemOne={
-                          <ReactCompareSliderImage
-                            src={URL.createObjectURL(image)}
-                            alt='Image one'
-                          />
-                        }
-                        itemTwo={
-                          <ReactCompareSliderImage
-                            src={`data:image/jpeg;base64,${resultImage}`}
-                            alt='Image two'
-                          />
-                        }
-                      />
-                    ))}
+                {isViewing && !isLoading && (
+                  <Box w='lg' h='lg'>
+                    <MyImageSlider
+                      originalImage={originalImage}
+                      resulImage={resultImage}
+                    />
 
-                    <Button
-                      bgColor='blue.500'
-                      color='white'
-                      mt='4'
-                      mr='4'
-                      _hover={{
-                        color: 'blue.500',
-                        bgColor: 'white',
-                        border: '1px',
-                        borderColor: 'blue.500',
-                      }}
-                      onClick={() => {
-                        setIsPreviewing(false)
-                        setIsViewing(false)
-                        setImages([])
-                      }}
-                    >
+                    <MyButton mt='4' mr='4' onClick={onRetry}>
                       他の画像を試す
-                    </Button>
+                    </MyButton>
                     <Button
                       as='a'
                       href={`data:image/jpeg;base64,${resultImage}`}
@@ -242,7 +177,7 @@ export default function Home() {
               </Box>
             </Box>
           </SimpleGrid>
-        </Box>
+        </Container>
       </Center>
     </>
   )
