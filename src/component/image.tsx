@@ -3,6 +3,7 @@ import { BsFillForwardFill } from 'react-icons/bs'
 import {
   ReactCompareSlider,
   ReactCompareSliderImage,
+  styleFitContainer,
 } from 'react-compare-slider'
 
 export const MySampleImages = ({ originalSrc, resultSrc, ...props }: any) => {
@@ -36,9 +37,12 @@ export const MyImageSlider = ({
   key,
   ...props
 }: any) => {
+  styleFitContainer['objectFit'] = 'contain'
+  styleFitContainer['objectPosition'] = 'center'
   return (
-    <Box w='80%'>
+    <Box w='md' h='md'>
       <ReactCompareSlider
+        {...styleFitContainer}
         key={key}
         itemOne={
           <ReactCompareSliderImage src={originalImage} alt='Image one' />
