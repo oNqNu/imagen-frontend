@@ -18,6 +18,7 @@ import {
   Textarea,
   useDisclosure,
   useToast,
+  IconButton,
 } from '@chakra-ui/react'
 import { init, send } from 'emailjs-com'
 import Head from 'next/head'
@@ -38,6 +39,7 @@ export const MyLayout = ({ children, ...props }: any) => {
     { name: '平滑化', label: 'smoothing' },
     { name: 'エッジ検出', label: 'edge-detection' },
     { name: 'しきい値処理', label: 'binary' },
+    { name: '画素値の変更', label: 'change-color' },
   ]
   const router = useRouter()
   const pushRoute = (e, href: string) => {
@@ -131,12 +133,22 @@ export const MyLayout = ({ children, ...props }: any) => {
             Imagen
           </Text>
           <HStack display='flex' gap='4'>
-            <BsGithub size='40px' color='white' />
-            <BiMailSend
+            <IconButton
+              as='a'
+              colorScheme='white'
+              aria-label='hithub'
+              icon={<BsGithub size='40px' />}
               size='40px'
-              color='white'
+              href='https://github.com/oNqNu/imagen-frontend'
+              target='_blank'
+            />
+            <IconButton
+              // variant='outline'
+              colorScheme='white'
+              aria-label='form'
+              icon={<BiMailSend size='40px' />}
+              size='40px'
               onClick={onOpen}
-              cursor='pointer'
             />
           </HStack>
         </Container>

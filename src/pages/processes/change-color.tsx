@@ -46,7 +46,7 @@ export default function Home() {
     data.append('image', image)
 
     const postImageUri =
-      'https://agile-fjord-29952.herokuapp.com/processing/binary'
+      'https://agile-fjord-29952.herokuapp.com/processing/change_color'
     axios
       .post(postImageUri, data, header)
       .then((res) => {
@@ -89,26 +89,25 @@ export default function Home() {
         <Container maxW='7xl'>
           <SimpleGrid columns={[1, 2]}>
             <Box>
-              <MyHeading mt='10'>しきい値処理</MyHeading>
+              <MyHeading mt='10'>画素値の変更</MyHeading>
               <MyDiscription mt='6'>
-                <b>しきい値処理</b>
-                は，画像を白と黒の2色のみに変換する画像処理技術です．
+                カラー画像は「赤」「緑」「青」の3色の画素値を組み合わせることで表現されます．
                 <br />
-                画像を2色に変換することで，物体の境目がはっきりとし，様々な画像解析が可能となります．
+                各色の画素値は 1~255
+                の値で表され，この画素値を調整することで画像の色を変更することができます．
                 <br />
-                例えば，混入した異物の個数をカウントしたり，特定の物体の大きさを測定することに応用されます．
                 <br />
-                画像上の物体と背景の境界の濃淡が薄い場合には，その部分が検知されない場合もあります．
+                このページでは，画像の青色の成分と赤色の成分を入れ替える処理を試せます．
               </MyDiscription>
               <MySampleImages
                 mt='8'
                 orginalSrc='../dog.jpg'
-                resultSrc='../dog_binary.jpg'
+                resultSrc='../dog_rgb.jpg'
               />
             </Box>
             <Box px='10'>
               <Text mt='16' fontSize='3xl' fontWeight='600'>
-                しきい値処理を試す．
+                画素値の変更を試す．
               </Text>
               <Box mt='8'>
                 {!isViewing && (

@@ -1,4 +1,4 @@
-import { Center, chakra } from '@chakra-ui/react'
+import { Center, chakra, SlideFade } from '@chakra-ui/react'
 import { BsFillForwardFill } from 'react-icons/bs'
 import {
   ReactCompareSlider,
@@ -43,5 +43,17 @@ export const MyImageSlider = ({
         />
       }
     />
+  )
+}
+
+export const FadeInImage = ({ image, delay }: any) => {
+  return (
+    <SlideFade
+      in
+      offsetY='40px'
+      transition={{ enter: { duration: 1.0, delay } }}
+    >
+      <chakra.img src={image} alt='description of image' h='32' />
+    </SlideFade>
   )
 }
