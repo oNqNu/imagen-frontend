@@ -5,10 +5,10 @@ import {
   ReactCompareSliderImage,
 } from 'react-compare-slider'
 
-export const MySampleImages = ({ orginalSrc, resultSrc, ...props }: any) => {
+export const MySampleImages = ({ originalSrc, resultSrc, ...props }: any) => {
   return (
     <Center {...props}>
-      <chakra.img src={`${orginalSrc}`} alt='original image' h='40' />
+      <chakra.img src={`${originalSrc}`} alt='original image' h='40' />
       <BsFillForwardFill size='70px' />
       <chakra.img src={`${resultSrc}`} alt='result image' h='40' />
     </Center>

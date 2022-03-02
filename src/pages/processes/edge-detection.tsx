@@ -104,8 +104,8 @@ export default function Home() {
               </MyDiscription>
               <MySampleImages
                 mt='8'
-                orginalSrc='../dog.jpg'
-                resultSrc='../dog_edge.jpg'
+                originalSrc={`https://onqnu.github.io/imagen-frontend/dog.jpg`}
+                resultSrc={`https://onqnu.github.io/imagen-frontend/dog_edge.jpg`}
               />
             </Box>
             <Box px='10'>
