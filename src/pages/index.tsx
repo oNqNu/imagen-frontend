@@ -35,10 +35,10 @@ export default function Home() {
       </Center>
       <Center mt='12' flexDirection='column'>
         <HStack gap='4' zIndex='100'>
-          <FadeInImage image='../dog.jpg' delay={0} />
-          <FadeInImage image='../dog_gray.jpg' delay={0.3} />
-          <FadeInImage image='../dog_rgb.jpg' delay={0.6} />
-          <FadeInImage image='../dog_edge.jpg' delay={0.9} />
+          <FadeInImage image='dog.jpg' delay={0} />
+          <FadeInImage image='dog_gray.jpg' delay={0.3} />
+          <FadeInImage image='dog_rgb.jpg' delay={0.6} />
+          <FadeInImage image='dog_edge.jpg' delay={0.9} />
         </HStack>
         <SlideFade
           in

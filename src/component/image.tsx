@@ -53,7 +53,11 @@ export const FadeInImage = ({ image, delay }: any) => {
       offsetY='40px'
       transition={{ enter: { duration: 1.0, delay } }}
     >
-      <chakra.img src={image} alt='description of image' h='32' />
+      <chakra.img
+        src={`https://onqnu.github.io/imagen-frontend/${image}`}
+        alt='description of image'
+        h='32'
+      />
     </SlideFade>
   )
 }
