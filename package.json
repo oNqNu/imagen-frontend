@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "homepage": "https://onqnu.github.io/imagen-frontend/"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.5",
