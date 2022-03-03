@@ -1,71 +1,41 @@
-# Imagen
+# [Imagen](https://imagen.yuma-gz.com/)
  
 画像処理体験サイト
  
 ## 簡単な説明
  
-自分の持っている画像に様々な処理を行うことができます．
+自分の持っている画像に様々な処理を行うことができます．  
 エモい写真を作ってインスタグラムにアップしましょう！
  
-***デモ***
+## DEMO
  
-![デモ](https://image-url.gif)
+![imagen_demo](https://user-images.githubusercontent.com/61644514/156561910-8130c217-612c-4dd5-a8d7-e8dde850f17c.gif)
+
+
  
 ## 機能
  
-- 機能1（UI/計算 etc ...）
-- 機能2
-- 機能3
-- ...
+- グレースケール化（カラー画像を白黒の濃淡に変換する処理です．）
+- 平滑化（画像をぼやけさせる処理です．）
+- エッジ検出（画像上にある物体の輪郭を検知する処理です．）
+- しきい値処理（カラー画像を白と黒の2色に変換する処理です．）
+- 画素値の変更（カラー画像の色を変更する処理です．）
  
-他の機能はこちらを参照して下さい。`awesome-tool --help`.
+## 使用したライブラリ
  
-## 必要要件
- 
-- 要件
-- 要件
-- 要件
-- ...
- 
-## 使い方
- 
-1. 使い方
-2. 使い方
-3. 使い方
- 
-## インストール
- 
-```
-$ git clone https://github.com/TomoakiTANAKA/awesome-tool
-$ cd awesome-tool
-$ sh setup.sh
-$ ~do anything~
-```
- 
-## テスト
- 
-1. 使い方
-2. 使い方
-3. 使い方
- 
-## デプロイ
- 
-1. デプロイ
-2. デプロイ
-3. デプロイ
- 
-## その他
- 
-その他その他その他その他
-その他その他その他その他
-その他その他その他その他
-その他その他その他その他
+ ### フロントエンド
+1. Next.js 
+2. chakra UI (UIコンポーネントライブラリ)
+3. EmailJS(自動メール送受信ライブラリ)
+ ### バックエンド
+1. Flask 
+2. openCV（画像処理ライブラリ）
+  
+
  
 ## 作者
  
-[@TanakanoAnchan](https://twitter.com/TanakanoAnchan)
-mail to: xxxx@mail.com
+山﨑 裕真(Yuma Yamasaki)  
+岡山大学大学院自然科学研究科  
+mail to: onanukintaro@gmail.com
  
-## ライセンス
- 
-[MIT](http://TomoakiTANAKA.mit-license.org)</blockquote>
