@@ -1,4 +1,4 @@
-import { Box, Center, chakra, SlideFade } from '@chakra-ui/react'
+import { Box, Center, chakra, Flex, SlideFade } from '@chakra-ui/react'
 import { BsFillForwardFill } from 'react-icons/bs'
 import {
   ReactCompareSlider,
@@ -14,8 +14,20 @@ export const MySampleImages = ({ originalSrc, resultSrc, ...props }: any) => {
         alt='original image'
         h={['24', '40']}
       />
-      <BsFillForwardFill size='50px' />
-      <chakra.img src={`${resultSrc}`} alt='result image' h={['24', '40']} />
+      <SlideFade
+        in
+        offsetX='-40px'
+        transition={{ enter: { duration: 1.0, delay: 1.0 } }}
+      >
+        <BsFillForwardFill size='50px' />
+      </SlideFade>
+      <SlideFade
+        in
+        offsetX='-40px'
+        transition={{ enter: { duration: 1.0, delay: 1.0 } }}
+      >
+        <chakra.img src={`${resultSrc}`} alt='result image' h={['24', '40']} />
+      </SlideFade>
     </Center>
   )
 }
@@ -40,8 +52,10 @@ export const MyImageSlider = ({
   styleFitContainer['objectFit'] = 'contain'
   styleFitContainer['objectPosition'] = 'center'
   return (
-    <Box w='md' h='md'>
+    <Box w='80%'>
+      {/* <Box w={['64', 'xl']}> */}
       <ReactCompareSlider
+        style={{ width: '100%' }}
         {...styleFitContainer}
         key={key}
         itemOne={

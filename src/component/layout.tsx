@@ -128,9 +128,10 @@ export const MyLayout = ({ children, ...props }: any) => {
             color='white'
             textAlign='center'
             lineHeight='50px'
-            w='32'
+            w='40'
             fontSize='4xl'
-            fontFamily='fantasy'
+            fontFamily='sans-serif'
+            fontWeight='bold'
             cursor='pointer'
             onClick={(e) => pushRoute(e, `/`)}
             display='inline-block'

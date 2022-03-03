@@ -3,6 +3,7 @@ import {
   Button,
   Center,
   Container,
+  Flex,
   Input,
   SimpleGrid,
   Spinner,
@@ -124,12 +125,14 @@ export default function Home() {
                   <Box>
                     <MyPreviewImage image={image} />
 
-                    <MyButton m='4' onClick={onConfirm}>
-                      確定
-                    </MyButton>
-                    <MyButton onClick={onRechoose}>
-                      別の画像を選択する．
-                    </MyButton>
+                    <Flex mt='4'>
+                      <MyButton mr='4' onClick={onConfirm}>
+                        確定
+                      </MyButton>
+                      <MyButton onClick={onRechoose}>
+                        別の画像を選択する．
+                      </MyButton>
+                    </Flex>
                   </Box>
                 )}
                 {isLoading && (
@@ -143,7 +146,7 @@ export default function Home() {
                 )}
 
                 {isViewing && !isLoading && (
-                  <Box w='lg' h='lg'>
+                  <Box>
                     <MyImageSlider
                       originalImage={originalImage}
                       resulImage={resultImage}
