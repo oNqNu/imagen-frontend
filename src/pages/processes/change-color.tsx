@@ -102,8 +102,8 @@ export default function Home() {
               </MyDiscription>
               <MySampleImages
                 mt='8'
-                originalSrc={`https://onqnu.github.io/imagen-frontend/dog.jpg`}
-                resultSrc={`https://onqnu.github.io/imagen-frontend/dog_rgb.jpg`}
+                originalSrc={`http://yuma-gz.com/imagen-frontend/dog.jpg`}
+                resultSrc={`http://yuma-gz.com/imagen-frontend/dog_rgb.jpg`}
               />
             </Box>
             <Box px='10'>

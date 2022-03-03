@@ -145,7 +145,7 @@ export const MyLayout = ({ children, ...props }: any) => {
               aria-label='hithub'
               icon={<BsGithub size='40px' />}
               size='40px'
-              href='https://github.com/oNqNu/imagen-frontend'
+              href='http://yuma-gz.com/imagen-frontend'
               target='_blank'
             />
             <IconButton
