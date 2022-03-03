@@ -80,7 +80,7 @@ export const FadeInImage = ({ image, delay }: any) => {
       transition={{ enter: { duration: 1.0, delay } }}
     >
       <chakra.img
-        src={`https://www.yuma-gz.com/${image}`}
+        src={`https://imagen.yuma-gz.com/${image}`}
         alt='description of image'
         h={['28', '32']}
       />
