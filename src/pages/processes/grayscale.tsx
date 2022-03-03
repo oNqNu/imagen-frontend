@@ -105,7 +105,7 @@ export default function Home() {
               <MySampleImages
                 mt='8'
                 originalSrc={`https://imagen.yuma-gz.com/dog.jpg`}
-                resultSrc={`./dog_gray.jpg`}
+                resultSrc={`https://imagen.yuma-gz.com/dog_gray.jpg`}
               />
             </Box>
             <Box px='10'>
