@@ -112,6 +112,9 @@ export default function Home() {
               <MySubHeading mt={['8', '16']}>
                 グレースケール化を試す．
               </MySubHeading>
+              <MyDiscription>
+                稀に，処理時間が20秒程かかる場合があります．
+              </MyDiscription>
               <Box mt='8'>
                 {!isViewing && (
                   <Input
