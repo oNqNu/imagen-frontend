@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# [Imagen](https://imagen.yuma-gz.com/)
+ 
+画像処理体験サイト
+ 
+## 簡単な説明
+ 
+自分の持っている画像に様々な処理を行うことができます．  
+エモい写真を作ってインスタグラムにアップしましょう！
+ 
+## DEMO
+ 
+![imagen_demo](https://user-images.githubusercontent.com/61644514/156561910-8130c217-612c-4dd5-a8d7-e8dde850f17c.gif)
 
-## Getting Started
 
-First, run the development server:
+ 
+## 機能
+ 
+- グレースケール化（カラー画像を白黒の濃淡に変換する処理です．）
+- 平滑化（画像をぼやけさせる処理です．）
+- エッジ検出（画像上にある物体の輪郭を検知する処理です．）
+- しきい値処理（カラー画像を白と黒の2色に変換する処理です．）
+- 画素値の変更（カラー画像の色を変更する処理です．）
+ 
+## 使用したライブラリ
+ 
+ ### フロントエンド
+1. Next.js 
+2. chakra UI (UIコンポーネントライブラリ)
+3. EmailJS(自動メール送受信ライブラリ)
+ ### バックエンド
+1. Flask 
+2. openCV（画像処理ライブラリ）
+  
 
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ 
+## 作者
+ 
+山﨑 裕真(Yuma Yamasaki)  
+岡山大学大学院自然科学研究科  
+mail to: onanukintaro@gmail.com
+ 
