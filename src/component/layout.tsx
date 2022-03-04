@@ -109,6 +109,10 @@ export const MyLayout = ({ children, ...props }: any) => {
       <Head>
         <title>Imagen</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+        <link
+          rel='icon'
+          href='https://deliver.commons.nicovideo.jp/thumbnail/nc163679?size=l'
+        ></link>
       </Head>
       <chakra.header
         bgColor='black'
