@@ -124,7 +124,7 @@ export default function Home() {
               <MyDiscription>
                 稀に，処理時間が20秒程かかる場合があります．
                 <br />
-                QRコードを作成に必要なパラメーター，また埋め込む情報（URLなど）を入力してください．
+                QRコードの作成に必要なパラメーター，また埋め込む情報（URLなど）を入力してください．
               </MyDiscription>
               <Box mt='8'>
                 {!isViewing && (
