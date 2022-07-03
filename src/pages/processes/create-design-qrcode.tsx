@@ -151,7 +151,7 @@ export default function Home() {
                   <Box>
                     <MyPreviewImage image={image} />
 
-                    <Flex mt='4'>
+                    <Flex mt='4' mb='4'>
                       <MyButton mr='4' onClick={onConfirm}>
                         確定
                       </MyButton>
