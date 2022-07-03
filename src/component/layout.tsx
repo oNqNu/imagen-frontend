@@ -45,6 +45,7 @@ export const MyLayout = ({ children, ...props }: any) => {
     { name: 'エッジ検出', label: 'edge-detection' },
     { name: 'しきい値処理', label: 'binary' },
     { name: '画素値の変更', label: 'change-color' },
+    { name: 'デザインQRコード', label: 'create-design-qrcode' },
   ]
   const router = useRouter()
   const pushRoute = (e, href: string) => {
