@@ -114,6 +114,7 @@ export default function Home() {
                 mt='8'
                 originalSrc={`https://imagen.yuma-gz.com/org.png`}
                 resultSrc={`https://imagen.yuma-gz.com/qr.png`}
+                imgSize={['48', '48']}
               />
             </Box>
             <Box px='10'>

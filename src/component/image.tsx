@@ -6,14 +6,15 @@ import {
   styleFitContainer,
 } from 'react-compare-slider'
 
-export const MySampleImages = ({ originalSrc, resultSrc, ...props }: any) => {
+export const MySampleImages = ({
+  originalSrc,
+  resultSrc,
+  imgSize = ['24', '40'],
+  ...props
+}: any) => {
   return (
     <Center {...props}>
-      <chakra.img
-        src={`${originalSrc}`}
-        alt='original image'
-        h={['24', '40']}
-      />
+      <chakra.img src={`${originalSrc}`} alt='original image' h={imgSize} />
       <SlideFade
         in
         offsetX='-40px'
@@ -26,7 +27,7 @@ export const MySampleImages = ({ originalSrc, resultSrc, ...props }: any) => {
         offsetX='-40px'
         transition={{ enter: { duration: 1.0, delay: 1.0 } }}
       >
-        <chakra.img src={`${resultSrc}`} alt='result image' h={['24', '40']} />
+        <chakra.img src={`${resultSrc}`} alt='result image' h={imgSize} />
       </SlideFade>
     </Center>
   )
