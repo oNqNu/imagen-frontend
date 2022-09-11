@@ -15,3 +15,19 @@ export const MyButton = (props: ButtonProps) => {
     />
   )
 }
+
+export const MySubButton = (props: ButtonProps) => {
+  return (
+    <Button
+      {...props}
+      bgColor='green.500'
+      color='white'
+      _hover={{
+        color: 'blue.500',
+        bgColor: 'white',
+        border: '1px',
+        borderColor: 'blue.500',
+      }}
+    />
+  )
+}
