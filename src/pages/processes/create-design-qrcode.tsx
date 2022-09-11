@@ -12,7 +12,7 @@ import {
 import axios from 'axios'
 import { useState } from 'react'
 import { BiDownload } from 'react-icons/bi'
-import { MyButton } from '../../component/button'
+import { MyButton, MySubButton } from '../../component/button'
 import {
   MyImageSlider,
   MyPreviewImage,
@@ -25,6 +25,7 @@ import { MyInput } from '../../component/form/input'
 
 export default function Home() {
   const [image, setImage] = useState<File>()
+  const [isEasyMode, setIsEasyMode] = useState(true)
   const [originalImage, setOriginalImage] = useState<any>('')
   const [resultImage, setResultImage] = useState<string>('')
   const [isPreviewing, setIsPreviewing] = useState<Boolean>(false)
@@ -34,6 +35,9 @@ export default function Home() {
     { label: 'パラメーター1', name: 'parameter1', type: 'slider' },
     { label: 'パラメーター2', name: 'parameter2', type: 'slider' },
     { label: 'パラメーター3', name: 'parameter3', type: 'slider' },
+    { label: '埋め込む情報', name: 'parameter3', type: 'input' },
+  ]
+  const formItemsForEasyMode = [
     { label: '埋め込む情報', name: 'parameter3', type: 'input' },
   ]
   const [formValues, setFormValues] = useState({
@@ -96,6 +100,10 @@ export default function Home() {
     setResultImage(null)
   }
 
+  const changeMode = () => {
+    setIsEasyMode(!isEasyMode)
+  }
+
   return (
     <>
       <MyLayout />
@@ -121,13 +129,39 @@ export default function Home() {
               <MySubHeading mt={['8', '16']}>
                 デザインQRコードを作成する．
               </MySubHeading>
+              <MySubButton mt='4' mr='4' onClick={changeMode}>
+                {isEasyMode
+                  ? 'Advanced Mode に切り替える'
+                  : '簡易モードに切り替える'}
+              </MySubButton>
               <MyDiscription>
                 稀に，処理時間が20秒程かかる場合があります．
                 <br />
                 QRコードの作成に必要なパラメーター，また埋め込む情報（URLなど）を入力してください．
               </MyDiscription>
               <Box mt='8'>
-                {!isViewing && (
+                {!isViewing && isEasyMode && (
+                  <>
+                    <VStack align='start'>
+                      {formItemsForEasyMode.map((item, index) => {
+                        if (item.type == 'slider')
+                          return <MySlider key={index} label={item.label} />
+                        if (item.type == 'input')
+                          return <MyInput key={index} label={item.label} />
+                      })}
+                    </VStack>
+                    <Input
+                      type='file'
+                      mt='4'
+                      accept='image/*,.png,.jpg,.jpeg,.gif'
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        handleOnAddImage(e)
+                        setIsPreviewing(true)
+                      }}
+                    />
+                  </>
+                )}
+                {!isViewing && !isEasyMode && (
                   <>
                     <VStack align='start'>
                       {formItems.map((item, index) => {
