@@ -35,6 +35,8 @@ export default function Home() {
     { label: 'パラメーター1', name: 'parameter1', type: 'slider' },
     { label: 'パラメーター2', name: 'parameter2', type: 'slider' },
     { label: 'パラメーター3', name: 'parameter3', type: 'slider' },
+    { label: 'パラメーター4', name: 'parameter4', type: 'slider' },
+    { label: 'パラメーター5', name: 'parameter5', type: 'slider' },
     { label: '埋め込む情報', name: 'parameter3', type: 'input' },
   ]
   const formItemsForEasyMode = [
